@@ -6,29 +6,35 @@
 		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		  <script src="https://timmywil.github.io/jquery.panzoom/test/libs/jquery.js"></script>
+    	  <script src="https://timmywil.github.io/jquery.panzoom/dist/jquery.panzoom.js"></script>
+    	  <script src="https://timmywil.github.io/jquery.panzoom/test/libs/jquery.mousewheel.js"></script>
 		    <style>
 		    html{
 		    	height:100%;
 		    }
 		    body{
+		    	font-family: helvetica;
 		    	min-height: 100%;
-		    	background: gray;
+		    	background: #f4f5f7;
 		    }
 		  	a {
 		  		color: blue;
 		  	}
 		  	.column
 		  	{
-		  		background: green;
+		  		
 		  		float:left;
-		  		height: 87.5vh;
+		  		height: 93.5vh;
 		  	}
 		  	#left
 		  	{
+		  		text-align:center;
 		  		width:27.5%;
 		  	}
 		  	#right
 		  	{
+		  		background: #f4f5f7;
 		  		border-left:2px solid black;
 		  		width:72.5%;
 		  	}
@@ -44,6 +50,10 @@
 		  		margin-top: 5vh;
 		  		margin-left: 27.5vw; 
 		  	}
+		  	.buttons
+		  	{
+		  		text-align:center;
+		  	}		  	
 		    </style>
 		   <title>Hello, world!</title>
   	</head>
@@ -51,33 +61,48 @@
   	<nav class="navbar navbar-inverse">
   		<div class="container-fluid">
     		<div class="navbar-header">
-      			<a style="color:#33E7FF;" class="navbar-brand" href="#">Tweet Web</a>
+      			<a style="color: red;" class="navbar-brand" href="#">YouTube Web</a>
     		</div>
-    		<ul class="nav navbar-nav">
-      			<li class="active"><a href="#">Home</a></li>
-    		</ul>
-    		<ul class="nav navbar-nav">
+       		<ul class="nav navbar-nav">
       			<li class="active"><a href="#">About</a></li>
     		</ul>
   		</div>
 	</nav>	
-	<div class="column" id = "left" style="background: pink;">
-		<h3 style="padding-left:1vw;">info</h3>
+	 
+	<div class="column" id = "left" style="background: #e1e5ed;">
+		<h3 style="padding-left:1vw;">User ID</h3>
+		<iframe style= "width: 100%; height:40%;"
+			src="https://www.youtube.com/embed/tgbNymZ7vqY"
+			allowfullscreen="allowfullscreen">
+		</iframe>
 	</div>
 	<div class = "column" id = "right">
-		<h3 style="padding-left:1vw;">Username</h3>
-		<!--img src="http://15441-presscdn-0-77.pagely.netdna-cdn.com/wp-content/uploads/2016/02/S17v4KVV.png"-->
+		<section id="pan-when-zoomed">
+      <div class="parent">
+        <div class="panzoom" style="text-align: center; padding-top: 3vh;">
+          <img src="http://blog.millermedeiros.com/wp-content/uploads/2010/04/awesome_tiger.svg" style="max-width: auto; max-height: 80vh";">
+        </div>
+      </div>
+      <div class="buttons" style="padding-top: 5vh;">
+      	<input type="range" class="zoom-range">
+        <button class="zoom-in">Zoom In</button>
+        <button class="zoom-out">Zoom Out</button>        
+        <button class="reset">Reset</button>
+      </div>
+      <script>
+        (function() {
+          var $section = $('#pan-when-zoomed');
+          $section.find('.panzoom').panzoom({
+            $zoomIn: $section.find(".zoom-in"),
+            $zoomOut: $section.find(".zoom-out"),
+            $zoomRange: $section.find(".zoom-range"),
+            $reset: $section.find(".reset"),
+            panOnlyWhenZoomed: true,
+            minScale: 1
+          });
+        })();
+      </script>
+    </section>		
 	</div>
-	<h3 id = "contact" style = "padding-top: 5vh;">hello</h3>
-
-
-
-    <!--h1 class="center">Tweet Web</h1-->
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
   </body>
 </html>

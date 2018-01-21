@@ -21,41 +21,7 @@
 		  	a {
 		  		color: blue;
 		  	}
-		  	.column
-		  	{
-		  		
-		  		float:left;
-		  		height: 93.5vh;
-		  	}
-		  	#left
-		  	{
-		  		text-align:center;
-		  		width:27.5%;
-		  	}
-		  	#right
-		  	{
-		  		background: #f4f5f7;
-		  		border-left:2px solid black;
-		  		width:72.5%;
-		  	}
-		  	.navbar{
-		  		margin-bottom: 0px;
-		  	}
-		  	h3
-		  	{
-		  		margin-top: 1vh;
-		  	}
-		  	#contact
-		  	{
-		  		margin-top: 5vh;
-		  		margin-left: 27.5vw; 
-		  	}
-		  	.buttons
-		  	{
-		  		text-align:center;
-		  	}		  	
-		    </style>
-		   <title>Hello, world!</title>
+		  	
   	</head>
   <body >
   	<nav class="navbar navbar-inverse">
@@ -71,11 +37,10 @@
 	 
 	<div class="column" id = "left" style="background: #e1e5ed;">
 		<h3 style="padding-left:1vw;">User ID</h3>
-		<iframe id="video" style= "width: 100%; height:40%;"
+		<iframe style= "width: 100%; height:40%;"
 			src="https://www.youtube.com/embed/v6WdrNN9j8w"
 			allowfullscreen="allowfullscreen">
 		</iframe>
-		<button onClick="search()">Search</button>
 	</div>
 	<div class = "column" id = "right">
 		<section id="pan-when-zoomed">
@@ -102,37 +67,7 @@
             minScale: 1
           });
         })();
-        function onClientLoad() {
-                gapi.client.load('youtube', 'v3', onYouTubeApiLoad);
-            }
-            // Called automatically when YouTube API interface is loaded (see line 9).
-            function onYouTubeApiLoad() {
-                gapi.client.setApiKey('AIzaSyDp7y3OsCrUT1sXkCHWqzPAPLnL1i7EqH0');
-            }
- 
-            // Called when the search button is clicked in the html code
-            function search() {
-                var request = gapi.client.youtube.search.list({
-                    order: 'date',
-                    part: 'snippet',
-                    channelId: 'UCO7fujFV_MuxTM0TuZrnE6Q',
-                    maxResults: 1,
-                });
-                /*var request = gapi.client.youtube.channels.list({
-                    part: 'snippet,statistics',
-                    id: 'UCY30JRSgfhYXA6i6xX1erWg'
-                })*/
-                // Send the request to the API server, call the onSearchResponse function when the data is returned
-                request.execute(onSearchResponse);
-            }
-            // Triggered by this line: request.execute(onSearchResponse);
-            function onSearchResponse(response) {
-                var responseString = JSON.stringify(response, '', 2);
-
-                document.getElementById('video').setAttribute("src","https://www.youtube.com/embed/"+response['items'][0]['id']['videoId'])
-            }
       </script>
-      <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>         
     </section>		
 	</div>
   </body>

@@ -4,7 +4,7 @@ graph = {}
 graph['nodes'] = []
 graph['edges'] = []
 
-f = open('names400.txt', encoding='utf8')
+f = open('names1000.txt', encoding='utf8')
 namesText = f.read()
 lines = namesText.split('\n')
 for i in range(0, len(lines)):

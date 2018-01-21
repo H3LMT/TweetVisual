@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
  	<head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.css"/>
 		  <meta charset="utf-8">
 		  <meta name="viewport" content="width=device-width, initial-scale=1">
 		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -85,33 +86,33 @@
     <h4 id="viewC" style="padding-left:1vw;">Views: N/A</h4>
     <h4 id="vidC" style="padding-left:1vw;">Videos: N/A</h4>
     <h4 id="comC" style="padding-left:1vw;">Comments: N/A</h4>
-		<button onClick="search()">Search</button>
 	</div>
 	<div class = "column" id = "right">
-		<section id="pan-when-zoomed">
-      <div class="parent">
-        <div class="panzoom" style="text-align: center; padding-top: 3vh;">
-          <img src="http://blog.millermedeiros.com/wp-content/uploads/2010/04/awesome_tiger.svg" style="max-width: auto; max-height: 80vh";">
-        </div>
-      </div>
-      <div class="buttons" style="padding-top: 5vh;">
-      	<input type="range" class="zoom-range">
-        <button class="zoom-in">Zoom In</button>
-        <button class="zoom-out">Zoom Out</button>        
-        <button class="reset">Reset</button>
-      </div>
+      <div class="alchemy" id="alchemy"></div>
+      <script src="d3/d3.min.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/scripts/vendor.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.js"></script>  
+        
+        <script type="text/javascript">
+            var config = {
+                    dataSource: './graph.json',
+                    directedEdges: true,
+                    search: true
+                };
+    
+            alchemy.begin({dataSource: "./graph.json"});
+
+            $(document).ready( function() {
+                setTimeout(function afterTwoSeconds() {
+                  $('.node').on('click', function() {
+                    var node_and_id = this.id;
+                    var only_id = this.id.substring(5, this.id.length);
+                    search(only_id);
+                  });
+                }, 3000)
+            });
+        </script>
       <script>
-        (function() {
-          var $section = $('#pan-when-zoomed');
-          $section.find('.panzoom').panzoom({
-            $zoomIn: $section.find(".zoom-in"),
-            $zoomOut: $section.find(".zoom-out"),
-            $zoomRange: $section.find(".zoom-range"),
-            $reset: $section.find(".reset"),
-            panOnlyWhenZoomed: true,
-            minScale: 1
-          });
-        })();
         function onClientLoad() {
                 gapi.client.load('youtube', 'v3', onYouTubeApiLoad);
             }
@@ -121,8 +122,7 @@
             }
  
             // Called when the search button is clicked in the html code
-            function search() {
-                var channel = 'UC_IRYSp4auq7hKLvziWVH6w'
+            function search(channel) {
                 var request = gapi.client.youtube.search.list({
                     order: 'date',
                     part: 'snippet',
@@ -153,7 +153,6 @@
             }
       </script>
       <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>         
-    </section>		
 	</div>
   </body>
 </html>

@@ -10,9 +10,6 @@
     	  <script src="https://timmywil.github.io/jquery.panzoom/dist/jquery.panzoom.js"></script>
     	  <script src="https://timmywil.github.io/jquery.panzoom/test/libs/jquery.mousewheel.js"></script>
 		    <style>
-		    html{
-		    	height:100%;
-		    }
 		    body{
 		    	font-family: helvetica;
 		    	min-height: 100%;
@@ -21,6 +18,18 @@
 		  	a {
 		  		color: blue;
 		  	}
+        #ytgif {
+          display: block;
+          margin: 0 auto;
+          width:30%;
+          height:20%;
+        }
+        h2 {
+          margin: 1cm 0cm 0cm 1cm;
+        }
+        h3 {
+          margin: 1cm 4cm 0cm 4cm;
+        }
 		  	</style>
   	</head>
   <body >
@@ -34,8 +43,23 @@
     		</ul>
   		</div>
 	</nav>	
+
+  <div id="ytdiv">
+    <img id="ytgif" src="youtube.gif" alt="Youtube Logo">
+  </div>
+
+  <div id="what">
+    <h1><center> What is YouTube Web? </center></h1>
+  </div>
+
+  <div id="info">
+    <h3> YouTube Web is a Graph Visualization program that connects youtubers by their recommended and featured channels. The web application also includes a side bar that allows you to search up a youtuber to see more information (Subscribers, Views, Videos, and Comments). The visualization uses Youtube's API to obtain data, Alchemy.js (a graph drawing application) to populate and create the graph's nodes and edges, and HTML/CSS and Javascript to give a user a highly interactive experience. Current features include: Interacting with the graph, viewing more information about a user, and searching for users. In the future, we hope to add VR/AR to make the experience even more immersive!</h3>  
+  </div>
+
+  <h2> Authors </h2>
+
 	 
-	<div class="column" id = "left" style="background: #e1e5ed;">
+	<!--<div class="column" id = "left" style="background: #e1e5ed;">
 		<h3 style="padding-left:1vw;">User ID</h3>
 		<iframe style= "width: 100%; height:40%;"
 			src="https://www.youtube.com/embed/v6WdrNN9j8w"
@@ -69,6 +93,6 @@
         })();
       </script>
     </section>		
-	</div>
+	</div>-->
   </body>
 </html>

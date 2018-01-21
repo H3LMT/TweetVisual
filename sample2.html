@@ -18,9 +18,13 @@
     
             alchemy.begin({dataSource: "./graph.json"});
 
-            alchemy.get.nodes().all().addEventListener('click', function() {
-                console.log("Clicked");
-            });
+            nodes = alchemy.get.nodes().all();
+            
+            for(var i = 0; i < nodes.length; i++) {
+                nodes[i].addEventListener("click", function() {
+                    console.log("Clicked");
+                });
+            }
         </script>
     </body>
 </html>

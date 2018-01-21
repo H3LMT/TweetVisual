@@ -19,7 +19,7 @@
             alchemy.begin({dataSource: "./graph.json"});
 
             alchemy.get.nodes().all().addEventListener('click', function() {
-                console.log(this.getProperties('caption'));
+                console.log("Clicked");
             });
         </script>
     </body>

@@ -4,7 +4,7 @@ graph = {}
 graph['nodes'] = []
 graph['edges'] = []
 
-f = open('names400_2.txt', encoding='utf8')
+f = open('names300.txt', encoding='utf8')
 namesText = f.read()
 lines = namesText.split('\n')
 for i in range(0, len(lines)):
@@ -17,7 +17,7 @@ for i in range(0, len(lines)):
     currNode['caption'] = name
     graph['nodes'].append(currNode)
 
-f = open('related400_2.txt', encoding='utf8')
+f = open('related300.txt', encoding='utf8')
 relatedText = f.read()
 lines = relatedText.split('\n')
 for i in range(0, len(lines)):

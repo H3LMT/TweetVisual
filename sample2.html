@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/alchemy.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="alchemy" id="alchemy"></div>
@@ -18,13 +19,30 @@
     
             alchemy.begin({dataSource: "./graph.json"});
 
-            nodes = alchemy.get.nodes().all();
+            $(document).ready( function() {
+
+                /*$('.node').on('click', function() {
+                    console.log("Reached here");
+                });*/
+
+                setTimeout(function afterTwoSeconds() {
+                  $('.node').on('click', function() {
+                    var node_and_id = this.id;
+                    var only_id = this.id.substring(5, this.id.length);
+                    console.log(only_id);
+                  });
+                }, 3000)
+
+                //nodes.on("dblclick",function(d){ alert("node was double clicked"); });
+            });
+
+            //console.log(alchemy.get.nodes());//.all();
             
-            for(var i = 0; i < nodes.length; i++) {
+            /*for(var i = 0; i < nodes.length; i++) {
                 nodes[i].addEventListener("click", function() {
                     console.log("Clicked");
                 });
-            }
+            }*/
         </script>
     </body>
 </html>

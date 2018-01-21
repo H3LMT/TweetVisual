@@ -17,7 +17,7 @@ for i in range(0, len(lines)):
     currNode['caption'] = name
     graph['nodes'].append(currNode)
 
-f = open('related400.txt', encoding='utf8')
+f = open('related1000.txt', encoding='utf8')
 relatedText = f.read()
 lines = relatedText.split('\n')
 for i in range(0, len(lines)):

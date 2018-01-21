@@ -28,10 +28,13 @@ We learned how to use the youtube API, how to systematically collect data from a
 
 Currently the app starts with the most popular channel (PewDiePie) and builds out a set distance from there via a breath first search. It only scans a few hundred channels. Scaling the app to visualize a much larger section of the site would be more useful.
 
+Link: https://frozen-ridge-58546.herokuapp.com
+
 In order for the youtube sidebar to work:<br/>
 -- open terminal change directory to index.html<br/>
 -- python -m SimpleHTTPServer<br/>
 -- open index.html by going to localhost:8000/#
+
 
 ### Created By:
 #### Vishal Baskar, Carnegie Mellon University '21 (Electrical and Computer Engineering)

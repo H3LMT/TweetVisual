@@ -13,7 +13,7 @@
 		    html{
 		    	height:100%;
 		    }
-		    body{
+		    body{ 
 		    	font-family: helvetica;
 		    	min-height: 100%;
 		    	background: #f4f5f7;
@@ -29,6 +29,7 @@
 		  	}
 		  	#left
 		  	{
+          margin-top: 0px;
 		  		text-align:center;
 		  		width:27.5%;
 		  	}
@@ -41,10 +42,15 @@
 		  	.navbar{
 		  		margin-bottom: 0px;
 		  	}
-		  	h3
+		  	h2
 		  	{
 		  		margin-top: 1vh;
 		  	}
+        h4
+        {
+          margin-top: 0.5vh;
+          margin-bottom: 4vh;
+        }
 		  	#contact
 		  	{
 		  		margin-top: 5vh;
@@ -70,11 +76,15 @@
 	</nav>	
 	 
 	<div class="column" id = "left" style="background: #e1e5ed;">
-		<h3 style="padding-left:1vw;">User ID</h3>
-		<iframe id="video" style= "width: 100%; height:40%;"
-			src="https://www.youtube.com/embed/v6WdrNN9j8w"
+		<h2 id="userID" style="padding-left:1vw;">----</h2>
+		<iframe id="video" style= "width: 100%; height:40%; margin-bottom: 1.5vh;"
+			src="https://www.youtube.com/embed/"
 			allowfullscreen="allowfullscreen">
 		</iframe>
+    <h4 id="subC" style="padding-left:1vw;">Subscribers: N/A</h4>
+    <h4 id="viewC" style="padding-left:1vw;">Views: N/A</h4>
+    <h4 id="vidC" style="padding-left:1vw;">Videos: N/A</h4>
+    <h4 id="comC" style="padding-left:1vw;">Comments: N/A</h4>
 		<button onClick="search()">Search</button>
 	</div>
 	<div class = "column" id = "right">
@@ -112,24 +122,34 @@
  
             // Called when the search button is clicked in the html code
             function search() {
+                var channel = 'UC_IRYSp4auq7hKLvziWVH6w'
                 var request = gapi.client.youtube.search.list({
                     order: 'date',
                     part: 'snippet',
-                    channelId: 'UCO7fujFV_MuxTM0TuZrnE6Q',
+                    channelId: channel,
                     maxResults: 1,
                 });
-                /*var request = gapi.client.youtube.channels.list({
+                var request2 = gapi.client.youtube.channels.list({
                     part: 'snippet,statistics',
-                    id: 'UCY30JRSgfhYXA6i6xX1erWg'
-                })*/
+                    id: channel
+                })
                 // Send the request to the API server, call the onSearchResponse function when the data is returned
                 request.execute(onSearchResponse);
+                request2.execute(onSearchStats);
             }
             // Triggered by this line: request.execute(onSearchResponse);
             function onSearchResponse(response) {
-                var responseString = JSON.stringify(response, '', 2);
-
                 document.getElementById('video').setAttribute("src","https://www.youtube.com/embed/"+response['items'][0]['id']['videoId'])
+                document.getElementById('userID').innerHTML=response['items'][0]['snippet']['channelTitle']
+            }
+            function onSearchStats(stats) {           
+                const numberWithCommas = (x) => {
+                  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                } 
+                document.getElementById('subC').innerHTML="Subscribers: "+numberWithCommas(stats['items'][0]['statistics']['subscriberCount'])
+                document.getElementById('viewC').innerHTML="Views: "+numberWithCommas(stats['items'][0]['statistics']['viewCount'])
+                document.getElementById('vidC').innerHTML="Videos: "+numberWithCommas(stats['items'][0]['statistics']['videoCount'])
+                document.getElementById('comC').innerHTML="Comments: "+numberWithCommas(stats['items'][0]['statistics']['commentCount'])
             }
       </script>
       <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>         
